@@ -14,7 +14,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
+    env:
+      RUNNER_DEBUG: 1
+      
     steps:
 
     - name: Debug01
@@ -39,8 +42,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         solution-name: DeployFlowsSample
-        solution-output-file: 'out/Solution.zip'
-        working-directory: 'solutions'
+        solution-output-file: 'Solution.zip'        
 
     - name: Unpack Solution
       uses: microsoft/powerplatform-actions/unpack-solution@v1

@@ -25,7 +25,7 @@ jobs:
       with:
         environment-url: 'https://dasabate-dev.crm4.dynamics.com'
         user-name: 'daniel@dasabate.onmicrosoft.com'
-        password-secret: ${{ secrets.MYPASSWORD }}
+        password-secret: ${{ secrets.MYPASSWORDx }}
         solution-name: DeployFlowsSample
         solution-output-file: 'out/Solution.zip'
         working-directory: 'solutions'

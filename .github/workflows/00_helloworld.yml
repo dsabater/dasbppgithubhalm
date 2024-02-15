@@ -24,13 +24,13 @@ jobs:
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
 
-    - name: WhoAmI
-      uses: microsoft/powerplatform-actions/who-am-i@v1
-      with:
-        environment-url: ${{ vars.ENVIRONMENT_URL }}
-        app-id: ${{ vars.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        tenant-id: ${{ vars.TENANT_ID }}
+    #- name: WhoAmI
+    #  uses: microsoft/powerplatform-actions/who-am-i@v1
+    #  with:
+    #    environment-url: ${{ vars.ENVIRONMENT_URL }}
+    #    app-id: ${{ vars.CLIENT_ID }}
+    #    client-secret: ${{ secrets.CLIENT_SECRET }}
+    #    tenant-id: ${{ vars.TENANT_ID }}
 
     - name: Export Solution - Unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
@@ -61,10 +61,21 @@ jobs:
         solution-folder: 'solutions/DeployFlowsSample'
         overwrite-files: true
     
-    - name: Prepare solution changes for check-in into source control
-      uses: microsoft/powerplatform-actions/branch-solution@v1
-      with:
-        solution-folder: 'solutions/DeployFlowsSample'
-        solution-target-folder: 'src/solutions/DeployFlowsSample'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        allow-empty-commit: true
+    # - name: Prepare solution changes for check-in into source control
+    #   uses: microsoft/powerplatform-actions/branch-solution@v1
+    #   with:
+    #     solution-folder: 'solutions/DeployFlowsSample'
+    #     solution-target-folder: 'src/solutions/DeployFlowsSample'
+    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+    #     allow-empty-commit: true
+
+    - name: Git Fetch and Commit 
+      run: |
+        git fetch --all  
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "GitHub Actions"
+        git checkout main
+        git add --all 
+        git commit -m "Updates from the dev environment"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push

@@ -19,17 +19,8 @@ jobs:
     steps:
 
     - name: Debug01
-      run: echo "Debug01"
+      run: echo "Url = ${{vars.ENVIRONMENT_URL}} ClientId=${{vars.CLIENT_ID}} TenantId=${vars.TENANT_ID}}"
 
-    - name: Debug02
-      run: echo "Url = ${{ vars.ENVIRONMENT_URL }}"
-
-    - name: Debug03
-      run: echo "ClientId = ${{vars.CLIENT_ID}}"
-
-    - name: Debug04
-      run: echo "Debug04"
-      
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
 
@@ -39,7 +30,7 @@ jobs:
         environment-url: ${{vars.ENVIRONMENT_URL}}
         app-id: ${{vars.CLIENT_ID}}
         client-secret: ${{secrets.CLIENT_SECRET}}
-        tenant-id: ${vars.TENANT_ID}}
+        tenant-id: ${{vars.TENANT_ID}}
         solution-name: DeployFlowsSample
         solution-output-file: 'out/Solution.zip'
         working-directory: 'solutions'

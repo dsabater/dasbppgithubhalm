@@ -30,7 +30,7 @@ jobs:
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        app-id: ${{vars.CLIENT_ID}}
+        app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
 
@@ -38,7 +38,7 @@ jobs:
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        app-id: ${{vars.CLIENT_ID}}
+        app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         solution-name: DeployFlowsSample
@@ -48,7 +48,7 @@ jobs:
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        app-id: ${{vars.CLIENT_ID}}
+        app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         solution-name: DeployFlowsSample
@@ -68,4 +68,4 @@ jobs:
       with:
         solution-folder: 'solutions/DeployFlowsSample'
         solution-target-folder: 'src/solutions/DeployFlowsSample'
-        token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}

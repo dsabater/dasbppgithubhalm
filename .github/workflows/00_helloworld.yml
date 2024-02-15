@@ -22,10 +22,10 @@ jobs:
       run: echo "Debug01"
 
     - name: Debug02
-      run: echo "Url = ${ENVIRONMENT_URL}"
+      run: echo "Url = ${{ vars.ENVIRONMENT_URL }}"
 
     - name: Debug03
-      run: echo "ClientId = ${CLIENT_ID}"
+      run: echo "ClientId = ${{vars.CLIENT_ID}}"
 
     - name: Debug04
       run: echo "Debug04"
@@ -36,10 +36,10 @@ jobs:
     - name: Export Solution
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${ENVIRONMENT_URL}
-        app-id: ${CLIENT_ID}
+        environment-url: ${{vars.ENVIRONMENT_URL}}
+        app-id: ${{vars.CLIENT_ID}}
         client-secret: ${{secrets.CLIENT_SECRET}}
-        tenant-id: ${TENANT_ID}
+        tenant-id: ${vars.TENANT_ID}}
         solution-name: DeployFlowsSample
         solution-output-file: 'out/Solution.zip'
         working-directory: 'solutions'

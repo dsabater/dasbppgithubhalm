@@ -22,7 +22,7 @@ jobs:
       run: echo "Debug01"
 
     - name: Debug02
-      run: echo $ENVIRONMENT_URL
+      run: echo "Url = $ENVIRONMENT_URL"
 
     - name: Debug03
       run: echo "Debug03"

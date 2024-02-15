@@ -2,9 +2,14 @@
 #  unpack it and prepare, commit and push a git branch with the changes
 
 on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *'
+  # schedule:
+  #   - cron: '0 2 * * *'
 
 permissions:
   contents: write           

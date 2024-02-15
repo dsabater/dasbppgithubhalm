@@ -1,4 +1,6 @@
-name: helloworld
+- name: helloworld
+  uses: microsoft/powerplatform-actions@v1.3.0
+  
 # Export solution from DEV environment
 #  unpack it and prepare, commit and push a git branch with the changes
 
@@ -14,7 +16,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
 

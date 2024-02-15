@@ -36,10 +36,10 @@ jobs:
     - name: Export Solution
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: $ENVIRONMENT_URL
-        app-id: $CLIENT_ID
+        environment-url: ${ENVIRONMENT_URL}
+        app-id: ${CLIENT_ID}
         client-secret: ${{secrets.CLIENT_SECRET}}
-        tenant-id: $TENANT_ID
+        tenant-id: ${TENANT_ID}
         solution-name: DeployFlowsSample
         solution-output-file: 'out/Solution.zip'
         working-directory: 'solutions'

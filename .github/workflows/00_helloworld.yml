@@ -67,3 +67,4 @@ jobs:
         solution-folder: 'solutions/DeployFlowsSample'
         solution-target-folder: 'src/solutions/DeployFlowsSample'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+        allow-empty-commit: true

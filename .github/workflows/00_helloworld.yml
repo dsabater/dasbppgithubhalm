@@ -34,7 +34,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
 
-    - name: Export Solution
+    - name: Export Solution - Unmanaged
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
@@ -44,12 +44,23 @@ jobs:
         solution-name: DeployFlowsSample
         solution-output-file: 'Solution.zip'        
 
+    - name: Export Solution - Managed
+      uses: microsoft/powerplatform-actions/export-solution@v1
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{vars.CLIENT_ID}}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        solution-name: DeployFlowsSample
+        solution-output-file: 'Solution_managed.zip'
+        managed: true
+
     - name: Unpack Solution
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
-        solution-file: 'out/Solution.zip'
+        solution-file: 'Solution.zip'
+        solution-type: 'Both'
         solution-folder: 'solutions/DeployFlowsSample'
-        solution-type: 'Unmanaged'
         overwrite-files: true
     
     - name: Prepare solution changes for check-in into source control

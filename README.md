@@ -13,8 +13,7 @@ To get started with this repository, follow the steps below:
 3. Configure your environment variables by creating a `.env` file and filling in the required values.
 4. Run the application using `npm start`.
 
-## Workflows
-
+## WorkflowsDeployFlowsSample
 This repository includes the following sample workflows:
 
 - Workflow 1: [Description of workflow 1]

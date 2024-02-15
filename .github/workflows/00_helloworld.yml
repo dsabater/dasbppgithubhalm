@@ -23,9 +23,10 @@ jobs:
     - name: Export Solution
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: 'https://dasabate-dev.crm4.dynamics.com'
-        user-name: 'daniel@dasabate.onmicrosoft.com'
-        password-secret: ${{ secrets.MYPASSWORDx }}
+        environment-url: ${{env.ENVIRONMENT_URL}}
+        app-id: ${{env.CLIENT_ID}}
+        client-secret: ${{secrets.CLIENT_SECRET}}
+        tenant-id: ${{env.TENANT_ID}}
         solution-name: DeployFlowsSample
         solution-output-file: 'out/Solution.zip'
         working-directory: 'solutions'

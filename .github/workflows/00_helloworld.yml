@@ -14,7 +14,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: ubuntu-latest   # alternate runner OS is: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
 
@@ -27,10 +27,10 @@ jobs:
     - name: Export Solution
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{vars.ENVIRONMENT_URL}}
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
         app-id: ${{vars.CLIENT_ID}}
-        client-secret: ${{secrets.CLIENT_SECRET}}
-        tenant-id: ${{vars.TENANT_ID}}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
         solution-name: DeployFlowsSample
         solution-output-file: 'out/Solution.zip'
         working-directory: 'solutions'

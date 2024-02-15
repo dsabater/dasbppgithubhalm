@@ -19,7 +19,7 @@ jobs:
     steps:
 
     - name: Debug01
-      run: echo "Url = ${{vars.ENVIRONMENT_URL}} ClientId=${{vars.CLIENT_ID}} TenantId=${vars.TENANT_ID}}"
+      run: echo "Url = ${{vars.ENVIRONMENT_URL}} ClientId=${{vars.CLIENT_ID}} TenantId=${{vars.TENANT_ID}}"
 
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1

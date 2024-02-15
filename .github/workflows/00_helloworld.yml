@@ -25,7 +25,7 @@ jobs:
       run: echo "Url = ${ENVIRONMENT_URL}"
 
     - name: Debug03
-      run: echo "ClientId = ${{CLIENT_ID}}"
+      run: echo "ClientId = ${CLIENT_ID}"
 
     - name: Debug04
       run: echo "Debug04"

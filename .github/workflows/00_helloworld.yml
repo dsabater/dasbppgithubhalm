@@ -16,7 +16,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     env:
       RUNNER_DEBUG: 1
@@ -45,7 +45,8 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         solution-name: DeployFlowsSample
-        solution-output-file: 'Solution.zip'        
+        solution-output-file: 'Solution.zip'
+        overwrite: true  
 
     - name: Export Solution - Managed
       uses: microsoft/powerplatform-actions/export-solution@v1
@@ -57,6 +58,7 @@ jobs:
         solution-name: DeployFlowsSample
         solution-output-file: 'Solution_managed.zip'
         managed: true
+        overwrite: true
 
     - name: Unpack Solution
       uses: microsoft/powerplatform-actions/unpack-solution@v1

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{16510e61-2ccb-ee11-9079-000d3ab2677b}</WebResourceId>
+  <Name>poc_DGSM_js_Case.js</Name>
+  <DisplayName>DGSM_js_Case.js</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/poc_DGSM_js_Casejs16510E61-2CCB-EE11-9079-000D3AB2677B</FileName>
+</WebResource>

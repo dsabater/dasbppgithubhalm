@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="PluginCacheDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91de867d67d04438" PluginAssemblyId="692afe95-17c7-43b9-b8d0-d72180d60ae8" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/PluginCacheDemo-692AFE95-17C7-43B9-B8D0-D72180D60AE8/PluginCacheDemo.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="PluginCacheDemo.InvokeWebhook, PluginCacheDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91de867d67d04438" PluginTypeId="58471a58-6d8a-47e6-b04a-1cdad42a5962" Name="PluginCacheDemo.InvokeWebhook">
+      <FriendlyName>deb63831-4e7e-4e54-a50e-438e2e39fbb7</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="PluginCacheDemo.PreCreateAnnotation, PluginCacheDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91de867d67d04438" PluginTypeId="684a701b-06d9-4892-a2eb-c380020b8fcc" Name="PluginCacheDemo.PreCreateAnnotation">
+      <FriendlyName>b13c50ce-f78d-4e01-bbf7-7b172e6b86e5</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="PluginCacheDemo.PreCreateContact, PluginCacheDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91de867d67d04438" PluginTypeId="129b928f-4c2c-42c0-a88c-89e75d1611a5" Name="PluginCacheDemo.PreCreateContact">
+      <FriendlyName>76ed7973-c98a-449c-ba79-6d324591f4c8</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

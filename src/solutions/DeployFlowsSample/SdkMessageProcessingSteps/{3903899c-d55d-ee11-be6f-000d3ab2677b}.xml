@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="PluginCacheDemo.PreCreateContact: Create of contact" SdkMessageProcessingStepId="{3903899c-d55d-ee11-be6f-000d3ab2677b}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>PluginCacheDemo.PreCreateContact, PluginCacheDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91de867d67d04438</PluginTypeName>
+  <PluginTypeId>129b928f-4c2c-42c0-a88c-89e75d1611a5</PluginTypeId>
+  <PrimaryEntity>contact</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>PluginCacheDemo.PreCreateContact: Create of contact</Description>
+  <FilteringAttributes>firstname,lastname</FilteringAttributes>
+  <ImpersonatingUserIdName># SpklDeploy</ImpersonatingUserIdName>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

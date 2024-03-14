@@ -7,9 +7,11 @@ jobs:
   helloworld_job:
 
     runs-on: ubuntu-latest
+    environment: dasabate_poc
     
     env:
       RUNNER_DEBUG: 1
+
       
     steps:
 

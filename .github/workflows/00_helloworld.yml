@@ -2,12 +2,17 @@
 name: helloworld
 on:
   workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate_dev'
   
 jobs:
   helloworld_job:
 
     runs-on: ubuntu-latest
-    environment: dasabate_poc
+    environment: ${{ github.event.inputs.environment_name }}
     
     env:
       RUNNER_DEBUG: 1
@@ -20,7 +25,7 @@ jobs:
     - name: WhoAmI
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-       environment-url: ${{github.event.inputs.environment_url}}
+       environment-url: ${{ vars.ENVIRONMENT_URL }}
        app-id: ${{ vars.CLIENT_ID }}
        client-secret: ${{ secrets.CLIENT_SECRET }}
        tenant-id: ${{ vars.TENANT_ID }}

@@ -1,21 +1,10 @@
-# Export solution from DEV environment
-#  unpack it and prepare, commit and push a git branch with the changes
-
+# Basic workflow to connect to the Power Platform and run a simple WhoAmI request
+name: helloworld
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
-
-  #workflow_dispatch:
-  # schedule:
-  #   - cron: '0 2 * * *'
-
-permissions:
-  contents: write           
+  
 jobs:
-  build:
+  helloworld_job:
 
     runs-on: ubuntu-latest
     
@@ -24,67 +13,13 @@ jobs:
       
     steps:
 
-    - name: checkout
-      uses: actions/checkout@v4
-
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
 
-    #- name: WhoAmI
-    #  uses: microsoft/powerplatform-actions/who-am-i@v1
-    #  with:
-    #    environment-url: ${{ vars.ENVIRONMENT_URL }}
-    #    app-id: ${{ vars.CLIENT_ID }}
-    #    client-secret: ${{ secrets.CLIENT_SECRET }}
-    #    tenant-id: ${{ vars.TENANT_ID }}
-
-    - name: Export Solution - Unmanaged
-      uses: microsoft/powerplatform-actions/export-solution@v1
+    - name: WhoAmI
+      uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-        environment-url: ${{ vars.ENVIRONMENT_URL }}
-        app-id: ${{ vars.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        tenant-id: ${{ vars.TENANT_ID }}
-        solution-name: DeployFlowsSample
-        solution-output-file: 'Solution.zip'
-        overwrite: true  
-
-    - name: Export Solution - Managed
-      uses: microsoft/powerplatform-actions/export-solution@v1
-      with:
-        environment-url: ${{ vars.ENVIRONMENT_URL }}
-        app-id: ${{ vars.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        tenant-id: ${{ vars.TENANT_ID }}
-        solution-name: DeployFlowsSample
-        solution-output-file: 'Solution_managed.zip'
-        managed: true
-        overwrite: true
-
-    - name: Unpack Solution
-      uses: microsoft/powerplatform-actions/unpack-solution@v1
-      with:
-        solution-file: 'Solution.zip'
-        solution-type: 'Both'
-        solution-folder: 'solutions/DeployFlowsSample'
-        overwrite-files: true
-    
-    - name: Prepare solution changes for check-in into source control
-      uses: microsoft/powerplatform-actions/branch-solution@v1
-      with:
-        solution-folder: 'solutions/DeployFlowsSample'
-        solution-target-folder: 'src/solutions/DeployFlowsSample'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        allow-empty-commit: true
-
-    - name: Git Fetch and Commit
-      run: |
-        git fetch --all  
-        git config --global user.email "no-reply@github.com"
-        git config --global user.name "GitHub Actions"
-        git checkout main
-        git add --all 
-        git commit -m "Updates from the dev environment"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git push
-
+       environment-url: ${{ vars.ENVIRONMENT_URL }}
+       app-id: ${{ vars.CLIENT_ID }}
+       client-secret: ${{ secrets.CLIENT_SECRET }}
+       tenant-id: ${{ vars.TENANT_ID }}

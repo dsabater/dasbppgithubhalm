@@ -11,7 +11,6 @@ jobs:
     
     env:
       RUNNER_DEBUG: 1
-
       
     steps:
 
@@ -21,7 +20,7 @@ jobs:
     - name: WhoAmI
       uses: microsoft/powerplatform-actions/who-am-i@v1
       with:
-       environment-url: ${{ vars.ENVIRONMENT_URL }}
+       environment-url: ${{github.event.inputs.environment_url}}
        app-id: ${{ vars.CLIENT_ID }}
        client-secret: ${{ secrets.CLIENT_SECRET }}
        tenant-id: ${{ vars.TENANT_ID }}

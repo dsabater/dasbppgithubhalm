@@ -16,6 +16,3 @@ This repository includes the following sample workflows:
 - 40_buildplugins: Build Plugin code.
 - 50_resetenvironment: Reset a sandbox environment.
 - 50_provisionenvironment: Provision a new environment.
-
-
-Test

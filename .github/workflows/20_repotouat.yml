@@ -12,6 +12,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: dasabate_poc
     
     env:
       RUNNER_DEBUG: 1
@@ -27,6 +28,13 @@ jobs:
     - name: Pack Solution - Managed
       uses: microsoft/powerplatform-actions/pack-solution@latest
       with:
-        solution-file: DeployFlowsSample
-        solution-folder: solutions/DeployFlowsSample
+        solution-file: pocpublisher_managed.zip
+        solution-folder: solutions/PoCPublisher
         solution-type: 'Managed'
+
+    - name: Deploy Solution to UAT
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: pocpublisher_managed.zip
+

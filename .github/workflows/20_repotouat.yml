@@ -1,10 +1,18 @@
-# Pack solution and deploy it to UAT
-
+# This workflow will deploy a solution to UAT environment
 name: 20_repotouat
 run-name: Deploy to UAT by @${{ github.actor }}
 
 on:
   workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate-poc'
+      solution_name:
+        description: 'Solution Name'
+        required: true
+        default: 'BasicSolution'
   pull_request:
     branches: [ "main" ]
  
@@ -26,31 +34,17 @@ jobs:
     - name: Pack Solution - Managed
       uses: microsoft/powerplatform-actions/pack-solution@latest
       with:
-        solution-file: pocpublisher_managed.zip
-        solution-folder: solutions/PoCPublisher
+        solution-file: solution_managed.zip
+        solution-folder: solutions/${{ inputs.solution_name }}
         solution-type: 'Managed'
 
     - name: Deploy Solution to UAT
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        solution-file: pocpublisher_managed.zip
+        solution-file: solution_managed.zip
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
+
   
-
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   environment: dasabate_poc
-    
-  #   env:
-  #     RUNNER_DEBUG: 1
-
-  #   steps:
-
-  #   - name: Install Power Platform Tools
-  #     uses: microsoft/powerplatform-actions/actions-install@latest
-
-

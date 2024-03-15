@@ -9,7 +9,7 @@ on:
       environment_name:
         description: 'Environment Name'
         required: true
-        default: 'dasabate_dev'
+        default: 'dasabate-dev'
       solution_name:
         description: 'Solution Name'
         required: true

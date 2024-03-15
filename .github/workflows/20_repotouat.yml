@@ -10,9 +10,7 @@ on:
  
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    environment: dasabate_poc
     
     env:
       RUNNER_DEBUG: 1
@@ -32,9 +30,24 @@ jobs:
         solution-folder: solutions/PoCPublisher
         solution-type: 'Managed'
 
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dasabate_poc
+    
+    env:
+      RUNNER_DEBUG: 1
+
+    steps:
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
     - name: Deploy Solution to UAT
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: pocpublisher_managed.zip
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
 

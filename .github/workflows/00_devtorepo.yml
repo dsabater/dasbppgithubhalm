@@ -13,7 +13,7 @@ on:
       solution_name:
         description: 'Solution Name'
         required: true
-        default: 'PoCPublisher'
+        default: 'WorkshopPublisherSolution'
     
 permissions:
   contents: write           

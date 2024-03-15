@@ -1,5 +1,5 @@
 # Export solution from DEV environment
-#  unpack it and prepare, commit and push a git branch with the changes
+#  Unpack it and prepare, commit and push a git branch with the changes
 name: 00_devtorepo
 
 on:

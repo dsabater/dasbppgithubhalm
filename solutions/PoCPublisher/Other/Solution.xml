@@ -5,8 +5,10 @@
     <LocalizedNames>
       <LocalizedName description="PoC Publisher" languagecode="1033" />
     </LocalizedNames>
-    <Descriptions />
-    <Version>1.0.0.6</Version>
+    <Descriptions>
+      <Description description="Simplest possible solution" languagecode="1033" />
+    </Descriptions>
+    <Version>1.0.0.8</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>poc</UniqueName>

@@ -1,24 +1,27 @@
 # Export solution from DEV environment
 #  Unpack it and prepare, commit and push a git branch with the changes
 name: 00_devtorepo
+run-name: Dev ${{ inputs.environment_name }} to Repo  by @${{ github.actor }}
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
-
-  #workflow_dispatch:
-  # schedule:
-  #   - cron: '0 2 * * *'
-
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate_dev'
+      solution_name:
+        description: 'Solution Name'
+        required: true
+        default: 'PoCPublisher'
+    
 permissions:
   contents: write           
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
     
     env:
       RUNNER_DEBUG: 1
@@ -38,7 +41,7 @@ jobs:
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
-        solution-name: DeployFlowsSample
+        solution-name:  ${{ inputs.solution_name }}
         solution-output-file: 'Solution.zip'
         overwrite: true  
 
@@ -49,7 +52,7 @@ jobs:
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
-        solution-name: DeployFlowsSample
+        solution-name: ${{ inputs.solution_name }}
         solution-output-file: 'Solution_managed.zip'
         managed: true
         overwrite: true
@@ -59,14 +62,14 @@ jobs:
       with:
         solution-file: 'Solution.zip'
         solution-type: 'Both'
-        solution-folder: 'solutions/DeployFlowsSample'
+        solution-folder: 'solutions/${{ inputs.solution_name }}'
         overwrite-files: true
     
     - name: Prepare solution changes for check-in into source control
       uses: microsoft/powerplatform-actions/branch-solution@v1
       with:
-        solution-folder: 'solutions/DeployFlowsSample'
-        solution-target-folder: 'src/solutions/DeployFlowsSample'
+        solution-folder: 'solutions/${{ inputs.solution_name }}'
+        solution-target-folder: 'src/solutions/${{ inputs.solution_name }}'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
 

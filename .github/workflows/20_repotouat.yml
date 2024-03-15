@@ -1,0 +1,32 @@
+# Pack solution and deploy it to UAT
+
+name: 20_repotouat
+run-name: Deploy to UAT by @${{ github.actor }}
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ "main" ]
+ 
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      RUNNER_DEBUG: 1
+      
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Pack Solution - Managed
+      uses: microsoft/powerplatform-actions/pack-solution@latest
+      with:
+        solution-file: DeployFlowsSample
+        solution-folder: solutions/DeployFlowsSample
+        solution-type: 'Managed'

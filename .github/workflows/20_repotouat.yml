@@ -31,6 +31,7 @@ jobs:
         solution-type: 'Managed'
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment: dasabate_poc
     

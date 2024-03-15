@@ -9,7 +9,7 @@ on:
     branches: [ "main" ]
  
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
     
     env:
@@ -30,19 +30,6 @@ jobs:
         solution-folder: solutions/PoCPublisher
         solution-type: 'Managed'
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: dasabate_poc
-    
-    env:
-      RUNNER_DEBUG: 1
-
-    steps:
-
-    - name: Install Power Platform Tools
-      uses: microsoft/powerplatform-actions/actions-install@latest
-
     - name: Deploy Solution to UAT
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
@@ -51,4 +38,19 @@ jobs:
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
+  
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment: dasabate_poc
+    
+  #   env:
+  #     RUNNER_DEBUG: 1
+
+  #   steps:
+
+  #   - name: Install Power Platform Tools
+  #     uses: microsoft/powerplatform-actions/actions-install@latest
+
 

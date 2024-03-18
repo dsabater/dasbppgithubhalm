@@ -28,7 +28,7 @@ jobs:
         echo "timestamp=12345" >> "$GITHUB_ENV"
 
     - name: Echo timestamp
-      run: echo Timestamp is' ${{ env.TIMESTAMP }}' or is it '$TIMESTAMP'
+      run: echo Timestamp is' ${{ env.TIMESTAMP }}' or is it '$TIMESTAMP' or $TIMESTAMP
 
     - name: WhoAmI
       uses: microsoft/powerplatform-actions/who-am-i@v1

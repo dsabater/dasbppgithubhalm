@@ -31,6 +31,10 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
 
+    - name: Get current timestamp
+      run: |
+        echo "timestamp=$(date +"%Y%m%d")" >> "$GITHUB_ENV"
+
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@latest
 
@@ -42,7 +46,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         name: ${{ inputs.solution_name }}
-        version: 2.0.0.${{ github.run_number }}
+        version: 2.0.$TIMESTAMP.${{ github.run_number }}
   
     - name: Export Solution - Unmanaged
       uses: microsoft/powerplatform-actions/export-solution@latest

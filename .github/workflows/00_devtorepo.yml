@@ -40,15 +40,13 @@ jobs:
 
     - name: Set solution version
       uses: microsoft/powerplatform-actions/set-online-solution-version@latest
-      env:
-        TIMESTAMP: ${{ env.timestamp }}
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         name: ${{ inputs.solution_name }}
-        version: 2.0.$TIMESTAMP.${{ github.run_number }}
+        version: 2.0.${{ env.timestamp }}.${{ github.run_number }}
   
     - name: Export Solution - Unmanaged
       uses: microsoft/powerplatform-actions/export-solution@latest

@@ -25,7 +25,7 @@ jobs:
     
     - name: Get current timestamp
       run: |
-        echo "timestamp=$(date +"%Y-%m-%d")" >> "$GITHUB_ENV"
+        echo "timestamp=12345" >> "$GITHUB_ENV"
 
     - name: Echo timestamp
       run: echo Timestamp is' ${{ env.TIMESTAMP }}' or is it '$TIMESTAMP'

@@ -36,7 +36,7 @@ jobs:
       uses: microsoft/powerplatform-actions/pack-solution@latest
       with:
         solution-file: solution_managed.zip
-        solution-folder: solutions/${{ inputs.solution_name }}
+        solution-folder: solutions/BasicSolution
         solution-type: 'Managed'
 
     - name: Deploy Solution to UAT

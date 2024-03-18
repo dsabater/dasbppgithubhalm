@@ -42,7 +42,7 @@ jobs:
     - name: Deploy Solution to UAT
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
-        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        environment-url: https://dasbpoc.crm.dynamics.com
         solution-file: solution_managed.zip
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}

@@ -17,20 +17,20 @@ jobs:
     
     env:
       RUNNER_DEBUG: 1
-      
+    
     steps:
 
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
     
-    - name: Get current timestamp
+    - name: Get current timestamp 0
       run: |
-        echo "timestamp=12345" >> "$GITHUB_ENV"
+        echo "timestamp=$(date +"%Y-%m-%d")" >> "$GITHUB_ENV"
 
-    - name: Echo timestamp
+    - name: Echo timestamp 1
       run: echo Timestamp is' ${{env.TIMESTAMP }}' or is it '$TIMESTAMP' or $TIMESTAMP
 
-    - name: Printf timestamp
+    - name: Printf timestamp 2
       run: printf '%s\n' $TIMESTAMP
 
     - name: WhoAmI

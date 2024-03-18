@@ -40,6 +40,8 @@ jobs:
 
     - name: Set solution version
       uses: microsoft/powerplatform-actions/set-online-solution-version@latest
+      env:
+        TIMESTAMP: ${{ env.timestamp }}
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         app-id: ${{ vars.CLIENT_ID }}

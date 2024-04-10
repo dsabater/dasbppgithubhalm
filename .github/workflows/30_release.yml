@@ -1,12 +1,16 @@
-name: 10_buildandgenerateartifact
-run-name: Build ${{ inputs.environment_name }} by @${{ github.actor }}
+name: 30_release
+run-name: Release ${{ inputs.environment_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
       environment_name:
-        description: 'Environment Name'
+        description: 'Target Environment'
         required: true
-        default: 'dasabate-dev'
+        default: 'dasabate-poc'
+      solution_name:
+        description: 'Solution Name'
+        required: true
+        default: 'DeployFlowsSample'
 
 jobs:
   build:
@@ -18,9 +22,6 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
 
-    - name: Download all artifacts 1
-      uses: actions/download-artifact@v4
-
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@latest
 
@@ -28,8 +29,8 @@ jobs:
       uses: microsoft/powerplatform-actions/pack-solution@v1
       with:
         solution-file: 'out/Solution.zip'
-        solution-folder: 'solutions/DeployFlowsSample'
-        solution-type: 'Unmanaged'
+        solution-folder: 'solutions/${{ inputs.solution_name }}'
+        solution-type: 'Both'
 
     - name: Upload artifact
       id: artifact-upload-step

@@ -18,6 +18,9 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
 
+    - name: Download all artifacts 1
+      uses: actions/download-artifact@v4
+
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@latest
 
@@ -43,7 +46,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Download all artifact-upload-step
+    - name: Download all artifacts 2
       uses: actions/download-artifact@v4
 
     - name: Display structure of downloaded files

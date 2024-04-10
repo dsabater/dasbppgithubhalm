@@ -46,9 +46,24 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
     - name: Download all artifacts 2
       uses: actions/download-artifact@v4
 
     - name: Display structure of files
       run: ls -R
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Import Solution
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: 'drop/Solution_managed.zip'
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        activate-plugins: true
+        run-asynchronously: true
+      

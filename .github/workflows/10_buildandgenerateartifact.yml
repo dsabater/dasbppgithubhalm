@@ -1,0 +1,32 @@
+name: 10_buildandgenerateartifact
+run-name: Build ${{ inputs.environment_name }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate-dev'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest 
+
+    steps:
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Pack Solution
+      uses: microsoft/powerplatform-actions/pack-solution@v1
+      with:
+        solution-file: 'out/Solution.zip'
+        solution-folder: 'solutions/DeployFlowsSample'
+        solution-type: 'Unmanaged'
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: solution
+        path: out/Solution.zip
+    

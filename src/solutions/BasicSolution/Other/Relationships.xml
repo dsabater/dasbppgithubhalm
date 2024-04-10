@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_ws_ingredient" />
+  <EntityRelationship Name="lk_ws_ingredient_createdby" />
+  <EntityRelationship Name="lk_ws_ingredient_modifiedby" />
+  <EntityRelationship Name="owner_ws_ingredient" />
+  <EntityRelationship Name="team_ws_ingredient" />
+  <EntityRelationship Name="user_ws_ingredient" />
+</EntityRelationships>

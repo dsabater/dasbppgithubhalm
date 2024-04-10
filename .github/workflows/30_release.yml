@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download all artifacts 2
+    - name: Download all artifacts
       uses: actions/download-artifact@v4
 
     - name: Display structure of files

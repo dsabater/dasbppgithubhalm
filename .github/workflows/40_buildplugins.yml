@@ -44,5 +44,5 @@ jobs:
 
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild **/*.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
+      run: msbuild D:\a\dasbppgithubhalm\dasbppgithubhalm\src\plugins\ContosoPluginsSolution\*.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
 

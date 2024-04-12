@@ -1,0 +1,41 @@
+
+# Build plugins workflow
+name: 40_buildplugins
+run-name: BuildPlugins by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      folder_name:
+        description: 'Folder Name'
+        required: true
+        default: 'ContosoPlugins'
+  
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    env:
+      RUNNER_DEBUG: 1
+    
+    steps:
+
+    - uses: NuGetToolInstaller@0
+      name: 'Use NuGet'
+      with:
+        versionSpec: '6.0.0'
+        checkLatest: true
+          
+    - uses: NuGetCommand@2
+      name: 'NuGet restore'
+      with:
+        command: 'restore'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'config'
+
+    - uses: VSBuild-sxs@1
+      name: 'Build Visual Studio solutions'
+      with:
+        solution: '**\*.sln'
+        platform: 'Any CPU'
+        configuration: 'Release'

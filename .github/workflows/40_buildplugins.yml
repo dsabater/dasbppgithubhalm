@@ -42,7 +42,10 @@ jobs:
     - name: 'Print working directory'
       run: pwd  
 
+    - name: 'Echo'
+      run: echo ${{ github.workspace }}
+
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild D:\a\dasbppgithubhalm\dasbppgithubhalm\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
+      run: msbuild D:\a\dasbppgithubhalm\dasbppgithubhalm\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
 

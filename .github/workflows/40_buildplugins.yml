@@ -37,4 +37,4 @@ jobs:
 
      # Show repository content
     - name: 'Show repository content'
-      run: ls -R ${{ github.workspace }}\src\plugins
+      run: ls -R ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\bin\Release

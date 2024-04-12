@@ -36,5 +36,5 @@ jobs:
     
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild src/plugins/ContosoPluginsSolution/*.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
+      run: msbuild **/*.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
 

@@ -1,0 +1,37 @@
+# Basic workflow to connect to the Power Platform and run a simple WhoAmI request
+name: 50_resetenvironment
+run-name: Reset environment ${{ inputs.environment_name }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate-dev'
+  
+jobs:
+  job:
+
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
+    
+    env:
+      RUNNER_DEBUG: 1
+    
+    steps:
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@v1
+    
+    - name: Reset environment
+      uses: microsoft/powerplatform-actions/reset-environment@v1
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+      
+
+
+
+  

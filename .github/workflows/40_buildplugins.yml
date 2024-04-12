@@ -28,8 +28,8 @@ jobs:
       with:
         nuget-version: '4.3.0'
 
-    - name: 'Restore NuGet packages' 
-      run: nuget restore solution/*.sln
+#    - name: 'Restore NuGet packages' 
+#      run: nuget restore solution/*.sln
 
     - name: 'Install msbuild'
       uses: microsoft/setup-msbuild@v1.3.1

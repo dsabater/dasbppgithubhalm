@@ -34,6 +34,10 @@ jobs:
     - name: 'Install msbuild'
       uses: microsoft/setup-msbuild@v1.3.1
     
+     # Show repository content
+    - name: 'Show repository content'
+      run: ls -R
+
     - name: 'Run msbuild'
       shell: cmd
       run: msbuild **/*.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger

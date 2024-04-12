@@ -7,7 +7,7 @@ on:
       environment_name:
         description: 'Environment Name'
         required: true
-        default: 'dasabate-dev'
+        default: 'dasabate-poc'
   
 jobs:
   job:

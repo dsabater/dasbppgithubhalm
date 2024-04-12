@@ -28,24 +28,13 @@ jobs:
       with:
         nuget-version: '4.3.0'
 
-#    - name: 'Restore NuGet packages' 
-#      run: nuget restore solution/*.sln
-
     - name: 'Install msbuild'
       uses: microsoft/setup-msbuild@v1.3.1
     
-     # Show repository content
-    - name: 'Show repository content'
-      run: ls -R
-
-     # Print working directory
-    - name: 'Print working directory'
-      run: pwd  
-
-    - name: 'Echo'
-      run: echo ${{ github.workspace }}
-
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild D:\a\dasbppgithubhalm\dasbppgithubhalm\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
+      run: msbuild ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
 
+     # Show repository content
+    - name: 'Show repository content'
+      run: ls -R ${{ github.workspace }}\src\plugins

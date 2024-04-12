@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="ContosoPluginsSolution, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e76446b6910ff343" PluginAssemblyId="a027f101-e096-461d-9334-5f0edc87a9d3" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/ContosoPluginsSolution-A027F101-E096-461D-9334-5F0EDC87A9D3/ContosoPluginsSolution.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="ContosoPlugins.AccountCreatePost, ContosoPluginsSolution, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e76446b6910ff343" PluginTypeId="131664ef-ba38-4870-9b76-19936f17d99f" Name="ContosoPlugins.AccountCreatePost">
+      <FriendlyName>4e557f67-2d87-4272-8159-d7571175fd5b</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

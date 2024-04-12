@@ -33,8 +33,8 @@ jobs:
     
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
+      run: msbuild ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -t:Clean -p:Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
 
      # Show repository content
     - name: 'Show repository content'
-      run: ls -R ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\bin\Release
+      run: ls -R ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\

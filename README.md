@@ -13,7 +13,7 @@ This repository includes the following sample workflows:
 - 02_importconfigdata: Import configuration data from the repository to a parameterized instance.
 - 10_repotodev: Deploy repository content to a DEV instance (unmanaged).
 - 20_repotouat: Deploy repository content to a UAT instance (managed).
-- 30_release: Release repository content to multiple instances.
+- **30_release**: Release repository content to multiple instances.
 - 40_buildplugins: Build Plugin code.
-- 50_resetenvironment: Reset a sandbox environment.
+- **50_resetenvironment**: Reset a sandbox environment. (TODO: specify user with permissions to reset)
 - 60_provisionenvironment: Provision a new environment.

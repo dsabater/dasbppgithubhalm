@@ -20,22 +20,21 @@ jobs:
     
     steps:
 
-    - uses: NuGetToolInstaller@0
-      name: 'Use NuGet'
-      with:
-        versionSpec: '6.0.0'
-        checkLatest: true
-          
-    - uses: NuGetCommand@2
-      name: 'NuGet restore'
-      with:
-        command: 'restore'
-        restoreSolution: '**/*.sln'
-        feedsToUse: 'config'
+    - name: checkout
+      uses: actions/checkout@v4
 
-    - uses: VSBuild-sxs@1
-      name: 'Build Visual Studio solutions'
+    - name: 'Use NuGet'
+      uses: nuget/setup-nuget@v1.1.1
       with:
-        solution: '**\*.sln'
-        platform: 'Any CPU'
-        configuration: 'Release'
+        nuget-version: '4.3.0'
+
+    - name: 'Restore NuGet packages' 
+      run: nuget restore solution/*.sln
+
+    - name: 'Install msbuild'
+      uses: microsoft/setup-msbuild@v1.3.1
+    
+    - name: 'Run msbuild'
+      shell: cmd
+      run: msbuild solution/*.sln -t:Clean -p:First=value;NewProperty=TestResult;Configuration=Release;Platform="x86";RestorePackagesConfig=true -maxCpuCount -v:minimal -fileLogger
+

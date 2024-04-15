@@ -32,11 +32,11 @@ jobs:
       uses: microsoft/setup-msbuild@v2.0.0
     
     - name: 'Nuget restore'
-      run: nuget restore ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln
+      run: nuget restore ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.csproj
 
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln -p:RestorePackagesConfig=true -maxCpuCount -verbosity:minimal -fileLogger -detailedSummary:False
+      run: msbuild ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.csproj -p:RestorePackagesConfig=true -maxCpuCount -verbosity:minimal -fileLogger -detailedSummary:False
 
      # Show repository content
     - name: 'Show repository content'

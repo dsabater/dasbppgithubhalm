@@ -31,8 +31,8 @@ jobs:
     - name: 'Install msbuild'
       uses: microsoft/setup-msbuild@v2.0.0
     
-    - name: 'Nuget restore'
-      run: nuget restore ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln
+    # - name: 'Nuget restore'
+    #   run: nuget restore ${{ github.workspace }}\src\plugins\ContosoPluginsSolution\ContosoPluginsSolution.sln
 
     - name: 'Run msbuild'
       shell: cmd

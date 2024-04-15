@@ -32,11 +32,11 @@ jobs:
       uses: microsoft/setup-msbuild@v2.0.0
     
     - name: 'Nuget restore'
-      run: nuget restore ${{ github.workspace }}\src\plugins\SimplePlugin\
+      run: nuget restore ${{ github.workspace }}\src\plugins\SimplePlugin\SimplePlugin.csproj
 
     - name: 'Run msbuild'
       shell: cmd
-      run: msbuild ${{ github.workspace }}\src\plugins\SimplePlugin\SimplePlugin.csproj -p:Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -verbosity:minimal -fileLogger -detailedSummary:False
+      run: msbuild ${{ github.workspace }}\src\plugins\SimplePlugin\SimplePlugin.csproj -t:Restore;Build -p:Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -verbosity:minimal -fileLogger -detailedSummary:False
 
      # Show repository content
     - name: 'Show repository content'

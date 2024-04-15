@@ -7,6 +7,16 @@
 *.zip 
 
 
+# msbuild output directories
+/bin
+/obj
+
+# vs intermediate directory
+/.vs
+
+# MSBuild Binary and Structured Log
+*.binlog
+
 # User-specific files
 *.rsuser
 *.suo

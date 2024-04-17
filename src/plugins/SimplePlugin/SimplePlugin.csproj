@@ -22,6 +22,7 @@
     <Authors>dasabate</Authors>
     <Company>MyCompany</Company>
     <Description>This is a sample nuget package which contains a Dataverse plugin and its runtime dependencies like Newtonsoft.Json</Description>
+    <BaseOutputPath>..\..\solutions\SimpleSolution\PluginAssemblies</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

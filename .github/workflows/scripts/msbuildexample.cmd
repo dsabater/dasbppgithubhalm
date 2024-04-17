@@ -1,0 +1,1 @@
+"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" "C:\Repos\dasbppgithubalm\src\plugins\SimplePlugin\SimplePlugin.csproj" -target:Clean;Build -p:Configuration=Release;Platform="Any CPU";RestorePackagesConfig=true -maxCpuCount -verbosity:quiet -fileLogger -detailedSummary:False

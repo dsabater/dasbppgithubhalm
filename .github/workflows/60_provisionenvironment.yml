@@ -49,6 +49,5 @@ jobs:
       
 
     - name: PAC CLI - Add SPN to environment
-      if: false
       run: |
         pac admin assign-user -env https://${{ inputs.environment_name }}.crm4.dynamics.com --user ${{ vars.CLIENT_ID }} --role "System Administrator" --application-user

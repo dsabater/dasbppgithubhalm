@@ -25,6 +25,7 @@ jobs:
         add-tools-to-path: true
 
     - name: Create environment
+      if: false
       uses: microsoft/powerplatform-actions/create-environment@v1
       with:
         user-name: ${{ secrets.USER_NAME }}
@@ -42,6 +43,12 @@ jobs:
         pac auth create --tenant ${{ vars.TENANT_ID }} --username ${{ secrets.USER_NAME }} --password ${{ secrets.PASSWORD_SECRET }}
 
     - name: PAC CLI - Create Service Principal
+      if: false
       run: |
         pac admin create-service-principal -env https://${{ inputs.environment_name }}.crm4.dynamics.com
       
+
+    - name: PAC CLI - Add SPN to environment
+      if: false
+      run: |
+        pac admin assign-user -env https://${{ inputs.environment_name }}.crm4.dynamics.com --user ${{ vars.CLIENT_ID }} --role "System Administrator" --application-user

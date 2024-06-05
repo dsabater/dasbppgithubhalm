@@ -1,9 +1,0 @@
-<entities >
-  <entity name="ws_ingredient" displayname="Ingredient" etc="10920" primaryidfield="ws_ingredientid" primarynamefield="ws_name" disableplugins="false">
-    <fields>
-      <field displayname="Ingredient" name="ws_ingredientid" type="guid" primaryKey="true" />
-      <field displayname="Name" name="ws_name" type="string" customfield="true" />
-      <field displayname="Description" name="ws_description" type="string" customfield="true" />
-    </fields>
-  </entity>
-</entities>

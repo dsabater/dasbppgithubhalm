@@ -7,7 +7,7 @@ This repository contains sample workflows for Dataverse in the Power Platform. I
 ## WorkflowsDeployFlowsSample
 This repository includes the following sample workflows:
 
-- **00_helloworld**: Sample pipeline to call WhoAmI in a parameterized instance
+- **00_helloworld**: Sample pipeline to call WhoAmI in a parameterized instance.
 - **00_devtorepo**: Push customizations from a DEV instance into the repository.
 - **01_exportconfigdata**: Export configuration data from an environment into the repository.
 - **02_importconfigdata**: Import configuration data from the repository to a parameterized instance.
@@ -16,4 +16,4 @@ This repository includes the following sample workflows:
 - **30_release**: Release repository content to multiple instances.
 - **40_buildplugins**: Build Plugin code.
 - **50_resetenvironment**: Reset a sandbox environment. (TODO: specify user with permissions to reset)
-- 60_provisionenvironment: Provision a new environment.
+- **60_provisionenvironment**: Provision a new environment and add service principal to the environment.

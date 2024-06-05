@@ -1,0 +1,43 @@
+# Workflow to create a new environment in Power Platform
+name: 60_provisionenvironment
+run-name: Provision environment ${{ inputs.environment_name }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+
+  
+jobs:
+  job:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      RUNNER_DEBUG: 1
+    
+    steps:
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@v1
+    
+    - name: Create environment
+      uses: microsoft/powerplatform-actions/create-environment@v1
+      with:
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        name: ${{ inputs.environment_name }}
+        type: 'Sandbox'
+        region: 'US'
+        currency: 'USD'
+        language: 'English'
+        domain: 'dasbcontoso'
+        
+
+      
+
+
+
+  

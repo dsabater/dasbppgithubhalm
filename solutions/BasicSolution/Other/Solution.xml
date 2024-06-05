@@ -6,7 +6,7 @@
       <LocalizedName description="Basic Solution" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>2.0.20240605.17</Version>
+    <Version>2.0.20240605.18</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>workshop</UniqueName>

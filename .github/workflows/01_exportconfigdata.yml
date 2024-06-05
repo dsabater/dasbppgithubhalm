@@ -1,0 +1,59 @@
+# Export configuration data from DEV environment
+
+name: 01_exportconfigdata
+run-name: Export Config data ${{ inputs.environment_name }} to Repo  by @${{ github.actor }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate-dev'
+      solution_name:
+        description: 'Solution Name'
+        required: true
+        default: 'BasicSolution'
+    
+permissions:
+  contents: write           
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
+    
+    env:
+      RUNNER_DEBUG: 1
+      
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+
+    - name: Export Data
+      uses: microsoft/powerplatform-actions/export-data@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        schema-file: 'configuration/${{ inputs.solution_name }}/schema.xml'
+        data-file: 'configuration/${{ inputs.solution_name }}/data.zip'
+
+
+    - name: Git Fetch and Commit
+      run: |
+        git fetch --all  
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "GitHub Actions"
+        git checkout main
+        git add --all 
+        git commit -m "Updated config data"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push
+

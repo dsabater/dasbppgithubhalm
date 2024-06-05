@@ -21,14 +21,12 @@ jobs:
 
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
+      with:
+        add-tools-to-path: true
 
-    - name: Execute DIR command
+    - name:  pac auth list
       run: |
-        dir
-
-    - name:  PAC AUTH WHO
-      run: |
-        $POWERPLATFORMTOOLS_PACPATH auth who
+        pac auth list
         
 
     - name: Create environment

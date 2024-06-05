@@ -33,7 +33,7 @@ jobs:
         region: 'US'
         currency: 'USD'
         language: 'English'
-        domain: 'dasbcontoso'
+        domain: ${{ inputs.environment_name }}
         
 
       

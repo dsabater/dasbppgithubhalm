@@ -30,8 +30,8 @@ jobs:
         tenant-id: ${{ vars.TENANT_ID }}
         name: ${{ inputs.environment_name }}
         type: 'Sandbox'
-        region: 'US'
-        currency: 'USD'
+        region: 'europe'
+        currency: 'EUR'
         language: 'English'
         domain: ${{ inputs.environment_name }}
         

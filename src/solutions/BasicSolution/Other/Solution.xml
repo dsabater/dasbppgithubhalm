@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.24023.194" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24051.202" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>BasicSolution</UniqueName>
     <LocalizedNames>
       <LocalizedName description="Basic Solution" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>2.0.20240318.13</Version>
+    <Version>2.0.20240605.18</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>workshop</UniqueName>
@@ -78,8 +78,20 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="email" behavior="2" />
       <RootComponent type="1" schemaName="ws_ingredient" behavior="0" />
+      <RootComponent type="62" schemaName="ws_BasicApp" behavior="0" />
+      <RootComponent type="80" schemaName="ws_BasicApp" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="ws_BasicApp" displayName="BasicApp" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.10)" id.uniquename="AppChannel" />
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=ws_BasicApp,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="ws_BasicApp" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>

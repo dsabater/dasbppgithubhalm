@@ -22,9 +22,13 @@ jobs:
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
 
+    - name: Execute DIR command
+      run: |
+        dir
+
     - name: Test PAC CLI
       run: |
-        pac auth who
+        C:\Users\runneradmin\.nuget\packages\microsoft.powerapps.cli\1.32.8\pac auth who
 
     - name: Create environment
       if: false

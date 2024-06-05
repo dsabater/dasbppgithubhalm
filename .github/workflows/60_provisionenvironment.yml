@@ -25,8 +25,8 @@ jobs:
     - name: Create environment
       uses: microsoft/powerplatform-actions/create-environment@v1
       with:
-        app-id: ${{ vars.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
+        user-name: ${{ secrets.USER_NAME }}
+        password-secret: ${{ secrets.PASSWORD_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         name: ${{ inputs.environment_name }}
         type: 'Sandbox'

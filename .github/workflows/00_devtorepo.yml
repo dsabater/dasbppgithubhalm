@@ -47,6 +47,14 @@ jobs:
         tenant-id: ${{ vars.TENANT_ID }}
         name: ${{ inputs.solution_name }}
         version: 2.0.${{ env.timestamp }}.${{ github.run_number }}
+
+    - name: Publish customizations
+      uses: microsoft/powerplatform-actions/publish-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
   
     - name: Export Solution - Unmanaged
       uses: microsoft/powerplatform-actions/export-solution@latest

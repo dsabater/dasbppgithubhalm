@@ -22,9 +22,9 @@ jobs:
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
 
-    - name: Install PAC CLI
+    - name: Test PAC CLI
       run: |
-        .\scripts\installpac.ps1 
+        pac auth who
 
     - name: Create environment
       if: false

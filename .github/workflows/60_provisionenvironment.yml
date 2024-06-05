@@ -12,7 +12,7 @@ on:
 jobs:
   job:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     env:
       RUNNER_DEBUG: 1
@@ -21,8 +21,13 @@ jobs:
 
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@v1
-    
+
+    - name: Install PAC CLI
+      run: |
+        .\scripts\installpac.ps1 
+
     - name: Create environment
+      if: false
       uses: microsoft/powerplatform-actions/create-environment@v1
       with:
         user-name: ${{ secrets.USER_NAME }}
@@ -34,6 +39,8 @@ jobs:
         currency: 'EUR'
         language: 'English'
         domain: ${{ inputs.environment_name }}
+
+      
         
 
       

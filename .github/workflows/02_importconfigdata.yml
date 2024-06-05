@@ -1,6 +1,6 @@
 # Import configuration data from repo into a target environment
 
-name: 01_importconfigdata
+name: 02_importconfigdata
 run-name: Import Config data from Repo into ${{ inputs.environment_name }} by @${{ github.actor }}
 
 on:

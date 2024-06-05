@@ -1,0 +1,45 @@
+# Import configuration data from repo into a target environment
+
+name: 01_importconfigdata
+run-name: Import Config data from Repo into ${{ inputs.environment_name }} by @${{ github.actor }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate-dev'
+      solution_name:
+        description: 'Solution Name'
+        required: true
+        default: 'BasicSolution'
+    
+jobs:
+  build:
+
+    runs-on: windows-latest # Export/Import data is only supported on Windows
+    environment: ${{ inputs.environment_name }}
+    
+    env:
+      RUNNER_DEBUG: 1
+      
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Create zip file from data folder
+      run: Compress-Archive -Path configuration/${{ inputs.solution_name }}/data/* -DestinationPath configuration/${{ inputs.solution_name }}/data.zip
+
+    - name: Import Data
+      uses: microsoft/powerplatform-actions/import-data@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}        
+        data-file: 'configuration/${{ inputs.solution_name }}/data.zip'

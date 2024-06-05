@@ -9,7 +9,7 @@ This repository includes the following sample workflows:
 
 - **00_helloworld**: Sample pipeline to call WhoAmI in a parameterized instance
 - **00_devtorepo**: Push customizations from a DEV instance into the repository.
-- 01_exportconfigdata: Export configuration data from a parameter instance into the repository.
+- **01_exportconfigdata**: Export configuration data from an environment into the repository.
 - 02_importconfigdata: Import configuration data from the repository to a parameterized instance.
 - 10_repotodev: Deploy repository content to a DEV instance (unmanaged).
 - **20_repotouat**: Deploy repository content to a UAT instance (managed).

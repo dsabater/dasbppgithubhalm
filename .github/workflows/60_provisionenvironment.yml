@@ -28,7 +28,7 @@ jobs:
 
     - name:  PAC AUTH WHO
       run: |
-        $env:POWERPLATFORMTOOLS_PACPATH auth who
+        $POWERPLATFORMTOOLS_PACPATH auth who
         
 
     - name: Create environment

@@ -15,7 +15,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
 
@@ -46,6 +46,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
 
     steps:
     - name: Download all artifacts

@@ -26,9 +26,10 @@ jobs:
       run: |
         dir
 
-    - name: Test PAC CLI
+    - name:  PAC AUTH WHO
       run: |
-        C:\Users\runneradmin\.nuget\packages\microsoft.powerapps.cli\1.32.8\pac auth who
+        $env:POWERPLATFORMTOOLS_PACPATH auth who
+        
 
     - name: Create environment
       if: false

@@ -45,6 +45,9 @@ jobs:
         schema-file: 'configuration/${{ inputs.solution_name }}/schema.xml'
         data-file: 'configuration/${{ inputs.solution_name }}/data.zip'
 
+    - name: Expand data zip file
+      run: Expand-Archive -Path configuration/${{ inputs.solution_name }}/data.zip -DestinationPath configuration/${{ inputs.solution_name }}/data
+
 
     - name: Git Fetch and Commit
       run: |

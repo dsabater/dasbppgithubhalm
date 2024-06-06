@@ -32,6 +32,9 @@ jobs:
         solution-folder: 'solutions/${{ inputs.solution_name }}'
         solution-type: 'Both'
 
+    - name: Copy deployment settings files
+      run: cp 'solutions/${{ inputs.solution_name }}/deploymentSettings_uat.json' out/deploymentSettings_uat.json
+
     - name: Upload artifact
       id: artifact-upload-step
       uses: actions/upload-artifact@v4
@@ -67,4 +70,6 @@ jobs:
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
         run-asynchronously: true
+        use-deployment-settings-file: true
+        deployment-settings-file: 'drop/deploymentSettings_uat.json'
       

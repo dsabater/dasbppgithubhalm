@@ -1,0 +1,15 @@
+{
+  "EnvironmentVariables": [],
+  "ConnectionReferences": [
+    {
+      "LogicalName": "ws_dataversecr",
+      "ConnectionId": "shared-commondataser-a466608e-19ff-4499-b2b0-9a748e582877",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "ws_jiracr",
+      "ConnectionId": "aa9a89f84d4549dfba5cb59d4dd1f4e4",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_jira"
+    }
+  ]
+}

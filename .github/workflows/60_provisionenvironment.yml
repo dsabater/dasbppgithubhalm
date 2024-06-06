@@ -42,7 +42,6 @@ jobs:
         pac auth create --tenant ${{ vars.TENANT_ID }} --username ${{ secrets.USER_NAME }} --password ${{ secrets.PASSWORD_SECRET }}
 
     - name: PAC CLI - Create Service Principal
-      if: false
       run: |
         pac admin create-service-principal -env https://${{ inputs.environment_name }}.crm4.dynamics.com
 

@@ -24,6 +24,8 @@ jobs:
       with:
         add-tools-to-path: true
 
+    # Make sure to enable the identity in the tenant to have rights to create environments
+    # A Global Admin should run pac admin application register -id <<application-id>>
     - name: Create environment
       uses: microsoft/powerplatform-actions/create-environment@v1
       with:

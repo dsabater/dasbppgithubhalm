@@ -19,13 +19,13 @@ This repository includes the following sample workflows:
 
 
 ## Privileged actions using an SPN
-Some actions like **Creating an environment** require tenant-level permissions. These need to be 
+Some actions like **Creating an environment** require tenant-level permissions. If you want to use an SPN to perform these actions, the These need to be configured by a Global Admin before executing the workflow.
 
-Create the Service Principal using [pac cli](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction?tabs=windows)
+* Create the Service Principal using [pac cli](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction?tabs=windows)
 
-`` pac admin create-service-principal --name some-name `` 
+`` pac admin create-service-principal --name <<some-name>> `` 
 
-If the SPN was already created, you can use **pac cli** to add the required permissions:
+* If the SPN was already created, you can use **pac cli** to add the required permissions:
 
 `` pac admin application register -id <<applicationid>> ``
 

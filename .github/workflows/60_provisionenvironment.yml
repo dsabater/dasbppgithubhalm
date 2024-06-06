@@ -24,19 +24,6 @@ jobs:
       with:
         add-tools-to-path: true
 
-    # - name: Create environment
-    #   uses: microsoft/powerplatform-actions/create-environment@v1
-    #   with:
-    #     user-name: ${{ secrets.USER_NAME }}
-    #     password-secret: ${{ secrets.PASSWORD_SECRET }}
-    #     tenant-id: ${{ vars.TENANT_ID }}
-    #     name: ${{ inputs.environment_name }}
-    #     type: 'Sandbox'
-    #     region: 'europe'
-    #     currency: 'EUR'
-    #     language: 'English'
-    #     domain: ${{ inputs.environment_name }}
-
     - name: Create environment
       uses: microsoft/powerplatform-actions/create-environment@v1
       with:

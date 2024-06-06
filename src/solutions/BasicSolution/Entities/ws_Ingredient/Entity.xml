@@ -717,8 +717,8 @@
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <Format>textarea</Format>
-          <MaxLength>100</MaxLength>
-          <Length>200</Length>
+          <MaxLength>212</MaxLength>
+          <Length>424</Length>
           <displaynames>
             <displayname description="Description" languagecode="1033" />
           </displaynames>
@@ -794,8 +794,8 @@
           <IsRetrievable>1</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
           <Format>text</Format>
-          <MaxLength>300</MaxLength>
-          <Length>250</Length>
+          <MaxLength>350</MaxLength>
+          <Length>700</Length>
           <displaynames>
             <displayname description="Name" languagecode="1033" />
           </displaynames>

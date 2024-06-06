@@ -11,7 +11,7 @@
       <grid name="resultset" jump="ws_name" select="1" icon="1" preview="1">
         <row name="result" id="ws_ingredientid">
           <cell name="ws_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="ws_description" width="300" />
         </row>
       </grid>
     </layoutxml>
@@ -21,11 +21,11 @@
         <entity name="ws_ingredient">
           <attribute name="ws_ingredientid" />
           <attribute name="ws_name" />
-          <attribute name="createdon" />
           <order attribute="ws_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="ws_description" />
         </entity>
       </fetch>
     </fetchxml>

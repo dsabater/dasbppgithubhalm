@@ -1,8 +1,7 @@
 # dasbppgithubhalm
 Daniel's Power Platform GitHub ALM repository, with sample workflows for Dataverse.
-# dasbppgithubhalm
 
-This repository contains sample workflows for Dataverse in the Power Platform. It is intended to showcase best practices for GitHub ALM (Application Lifecycle Management) in the context of Power Platform development.
+This repository contains sample GitHub workflows to get started automating deployment of Dataverse solutions in the Power Platform. It is intended to showcase some example scenarios for ALM (Application Lifecycle Management) in the context of Power Platform development.
 
 ## WorkflowsDeployFlowsSample
 This repository includes the following sample workflows:
@@ -17,3 +16,17 @@ This repository includes the following sample workflows:
 - **40_buildplugins**: Build Plugin code.
 - **50_resetenvironment**: Reset a sandbox environment. (TODO: specify user with permissions to reset)
 - **60_provisionenvironment**: Provision a new environment and add service principal to the environment.
+
+
+## Privileged actions using an SPN
+Some actions like **Creating an environment** require tenant-level permissions. These need to be 
+
+Create the Service Principal using [pac cli](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction?tabs=windows)
+
+`` pac admin create-service-principal --name some-name `` 
+
+If the SPN was already created, you can use **pac cli** to add the required permissions:
+
+`` pac admin application register -id <<applicationid>> ``
+
+More information [here](https://learn.microsoft.com/en-us/power-platform/admin/powershell-create-service-principal)

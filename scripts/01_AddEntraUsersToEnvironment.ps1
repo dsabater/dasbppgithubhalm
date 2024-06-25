@@ -1,6 +1,14 @@
 param (
-    [string]$EnvironmentName
+    [string]$EnvironmentName,
+    [string]$UserName,
+    [SecureString]$Password
 )
+
+#$connectionhost = "https://admin.services.crm4.dynamics.com"
+
+#$securePassword = ConvertTo-SecureString $Password -ASPlainText -Force  
+Add-PowerAppsAccount -Endpoint prod -Username $UserName -Password $Password
+
 
 # Read users from CSV file
 $users = Import-Csv -Path config/EntraUsers.csv -Encoding Unicode -Delimiter ";"

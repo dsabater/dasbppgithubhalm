@@ -44,5 +44,5 @@ jobs:
     - name: Add Entra users to environment
       shell: powershell
       run: |
-        .\scripts\01_AddEntraUsersToEnvironment.ps1 -EnvironmentName ${{ inputs.environment_name }} -UserName ${{ secrets.USER_NAME }} -Password ${{ secrets.PASSWORD_SECRET }} 
+        .\scripts\01_AddEntraUsersToEnvironment.ps1 -EnvironmentName ${{ inputs.environment_name }} -UserName ${{ secrets.USER_NAME }} -Password $(ConvertTo-SecureString ${{ secrets.PASSWORD_SECRET }} -AsPlainText -Force) 
 

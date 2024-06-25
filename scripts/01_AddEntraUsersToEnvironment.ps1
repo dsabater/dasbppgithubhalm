@@ -3,7 +3,7 @@ param (
 )
 
 # Read users from CSV file
-$users = Import-Csv -Path itx\EntraUsers.csv -Encoding Unicode -Delimiter ";"
+$users = Import-Csv -Path config/EntraUsers.csv -Encoding Unicode -Delimiter ";"
 
 # Loop through users and synchronize with PowerApps environment
 foreach ($user in $users) {

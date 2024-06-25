@@ -42,6 +42,7 @@ jobs:
 
     # Call script 01_AddEntraUsersToEnvironment passing in the environment name as parameter
     - name: Add Entra users to environment
+      shell: powershell
       run: |
         .\scripts\01_AddEntraUsersToEnvironment.ps1 -EnvironmentName ${{ inputs.environment_name }}
 

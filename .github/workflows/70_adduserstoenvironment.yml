@@ -18,13 +18,17 @@ jobs:
     
     steps:
 
+    # Checkout the repository
+    - name: checkout
+      uses: actions/checkout@v4
+
     # Call powershell to write a string to the console
     - name: Write a string to the console
       run: |
         Write-Host "Adding users to environment ${{ inputs.environment_name }}"
 
     # Call powershell to list the current directory content
-    - name: List the current directory content
+    - name: List the current directory name and its content
       run: |
         Get-ChildItem
 

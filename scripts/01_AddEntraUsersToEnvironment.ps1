@@ -17,17 +17,15 @@ $users = Import-Csv -Path config/EntraUsers.csv -Encoding Unicode -Delimiter ";"
 foreach ($user in $users) {
 
     # 1 - Add user to Environment
-    Write-Host "User '$($user.DisplayName)' - Add to environment..." -NoNewline -ForegroundColor White
+    Write-Host "User '$($user.DisplayName)' - Add to environment..." -NoNewline
     $result = Add-AdminPowerAppsSyncUser -EnvironmentName $EnvironmentName -PrincipalObjectId $user.ObjectId
 
     # If result code is 200, then the user was added successfully
     if ($result.Code -eq 200) {
-        Write-Host "User '$($user.DisplayName)' `e[32mOK`e[0m"
+        Write-Host "`e[32m OK`e[0m"
     }
     elseif ($result.Code -eq 400) {
-        
-
-        Write-Host "`e[31mFAIL `e[0m" -NoNewline
+        Write-Host "`e[31m FAIL `e[0m" -NoNewline
         # Create a string with result.Error.message skipping the first 35 characters until the first appearance of string "The tracking Id is"
         $errorString = $result.Error.Message.Substring(32, $result.Error.Message.IndexOf("The tracking Id is") - 35)
         # Parse the errorstring variable into an object
@@ -37,8 +35,8 @@ foreach ($user in $users) {
         continue
     } 
     else {
-       Write-Host "FAIL " -ForegroundColor Red -NoNewline
-       Write-Host "Unknown Error: $($result.Code)" -ForegroundColor Yellow
+       Write-Host "`e[31m FAIL `e[0m" -NoNewline
+       Write-Host "Unknown Error: $($result.Code)"
        continue
     }
     

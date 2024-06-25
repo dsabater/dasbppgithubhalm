@@ -22,10 +22,12 @@ foreach ($user in $users) {
 
     # If result code is 200, then the user was added successfully
     if ($result.Code -eq 200) {
-        Write-Host "User '$($user.DisplayName)' OK" -ForegroundColor Green
+        Write-Host "User '$($user.DisplayName)' `e[32mOK`e[0m"
     }
     elseif ($result.Code -eq 400) {
-        Write-Host "FAIL " -ForegroundColor Red -NoNewline
+        
+
+        Write-Host "`e[31mFAIL `e[0m" -NoNewline
         # Create a string with result.Error.message skipping the first 35 characters until the first appearance of string "The tracking Id is"
         $errorString = $result.Error.Message.Substring(32, $result.Error.Message.IndexOf("The tracking Id is") - 35)
         # Parse the errorstring variable into an object

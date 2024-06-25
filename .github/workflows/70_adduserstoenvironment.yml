@@ -1,0 +1,25 @@
+# Workflow to add users to an environment in Power Platform
+name: 70_adduserstoenvironment
+run-name: Add users to environment ${{ inputs.environment_name }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+  
+jobs:
+  job:
+
+    runs-on: windows-latest
+    
+    env:
+      RUNNER_DEBUG: 1
+    
+    steps:
+
+    # Call powershell to write a string to the console
+    - name: Write a string to the console
+      run: |
+        Write-Host "Adding users to environment ${{ inputs.environment_name }}"
+

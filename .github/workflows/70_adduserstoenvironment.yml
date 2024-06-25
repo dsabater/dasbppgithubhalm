@@ -25,7 +25,7 @@ jobs:
     # Install and import the required modules
     - name: Install and import modules
       run: |
-        Get-PSRepository -Name PSGallery 
+        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
         Install-Module Microsoft.PowerShell.Utility -Scope CurrentUser
         Install-Module Microsoft.PowerApps.Administration.PowerShell -Scope CurrentUser
         Install-Module -Name AzureAD -Scope CurrentUser

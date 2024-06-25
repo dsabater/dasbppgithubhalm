@@ -23,3 +23,7 @@ jobs:
       run: |
         Write-Host "Adding users to environment ${{ inputs.environment_name }}"
 
+
+    - name: Call test script scripts/testscript.ps1
+      run: |
+        .\scripts\testscript.ps1

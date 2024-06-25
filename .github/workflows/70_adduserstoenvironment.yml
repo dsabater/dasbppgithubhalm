@@ -29,9 +29,9 @@ jobs:
         #Install-Module Microsoft.PowerShell.Utility -Scope CurrentUser
         #Install-Module Microsoft.PowerApps.Administration.PowerShell -Scope CurrentUser
         #Install-Module -Name AzureAD -Scope CurrentUser
-        Import-Module Microsoft.PowerShell.Utility
-        Import-Module Microsoft.PowerApps.Administration.PowerShell
         Import-Module AzureAD
+        Import-Module Microsoft.PowerShell.Utility
+        #Import-Module Microsoft.PowerApps.Administration.PowerShell        
         
 
     # Call script 01_AddEntraUsersToEnvironment passing in the environment name as parameter

@@ -22,16 +22,19 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
 
-    # Call powershell to write a string to the console
-    - name: Write a string to the console
+    # Install and import the required modules
+    - name: Install and import modules
       run: |
-        Write-Host "Adding users to environment ${{ inputs.environment_name }}"
+        Install-Module Microsoft.PowerShell.Utility -Scope CurrentUser
+        Install-Module Microsoft.PowerApps.Administration.PowerShell -Scope CurrentUser
+        Install-Module -Name AzureAD -Scope CurrentUser
+        Import-Module Microsoft.PowerShell.Utility
+        Import-Module Microsoft.PowerApps.Administration.PowerShell
+        Import-Module AzureAD
+        
 
-    # Call powershell to list the current directory content
-    - name: List the current directory name and its content
+    # Call script 01_AddEntraUsersToEnvironment passing in the environment name as parameter
+    - name: Add Entra users to environment
       run: |
-        Get-ChildItem
+        .\scripts\01_AddEntraUsersToEnvironment.ps1 -EnvironmentName ${{ inputs.environment_name }}
 
-    - name: Call test script scripts/testscript.ps1
-      run: |
-        scripts\testscript.ps1

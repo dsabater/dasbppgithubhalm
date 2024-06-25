@@ -24,9 +24,9 @@ jobs:
 
     
 
-    # Install and import the required modules
+    # Install and import the required modules with PowerShell 5.1 (shell: powershell)
     - name: Install and import modules
-      shell: pwsh5
+      shell: powershell
       run: |
         $PSVersionTable.PSVersion
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted

@@ -4,11 +4,8 @@ param (
     [SecureString]$Password
 )
 
-#$connectionhost = "https://admin.services.crm4.dynamics.com"
-
-#$securePassword = ConvertTo-SecureString $Password -ASPlainText -Force  
+# Connect to PowerApps
 Add-PowerAppsAccount -Endpoint prod -Username $UserName -Password $Password
-
 
 # Read users from CSV file
 $users = Import-Csv -Path config/EntraUsers.csv -Encoding Unicode -Delimiter ";"
@@ -22,21 +19,21 @@ foreach ($user in $users) {
 
     # If result code is 200, then the user was added successfully
     if ($result.Code -eq 200) {
-        Write-Host "`e[32m OK`e[0m"
+        Write-Host "OK"
     }
     elseif ($result.Code -eq 400) {
-        Write-Host "`e[31m FAIL `e[0m" -NoNewline
+        Write-Error "FAIL" -NoNewline
         # Create a string with result.Error.message skipping the first 35 characters until the first appearance of string "The tracking Id is"
         $errorString = $result.Error.Message.Substring(32, $result.Error.Message.IndexOf("The tracking Id is") - 35)
         # Parse the errorstring variable into an object
         $errorObject = ConvertFrom-Json $errorString
         $errorText = $errorObject.errors[0].Description
-        Write-Host "Error: $errorText" -ForegroundColor White
+        Write-Error "Error: $errorText"
         continue
     } 
     else {
-       Write-Host "`e[31m FAIL `e[0m" -NoNewline
-       Write-Host "Unknown Error: $($result.Code)"
+       Write-Error "FAIL" -NoNewline
+       Write-Error "Unknown Error: $($result.Code)"
        continue
     }
     

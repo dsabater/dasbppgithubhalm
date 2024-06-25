@@ -22,18 +22,18 @@ foreach ($user in $users) {
         Write-Host "OK"
     }
     elseif ($result.Code -eq 400) {
-        Write-Error "FAIL"
+        Write-Host "FAIL"
         # Create a string with result.Error.message skipping the first 35 characters until the first appearance of string "The tracking Id is"
         $errorString = $result.Error.Message.Substring(32, $result.Error.Message.IndexOf("The tracking Id is") - 35)
         # Parse the errorstring variable into an object
         $errorObject = ConvertFrom-Json $errorString
         $errorText = $errorObject.errors[0].Description
-        Write-Error "Error: $errorText"
+        Write-Host "Error: $errorText"
         continue
     } 
     else {
-       Write-Error "FAIL" -NoNewline
-       Write-Error "Unknown Error: $($result.Code)"
+       Write-Host "FAIL" -NoNewline
+       Write-Host "Unknown Error: $($result.Code)"
        continue
     }
     

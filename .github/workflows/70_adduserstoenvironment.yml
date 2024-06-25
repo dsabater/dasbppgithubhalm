@@ -34,4 +34,4 @@ jobs:
 
     - name: Call test script scripts/testscript.ps1
       run: |
-        .\scripts\testscript.ps1
+        scripts\testscript.ps1

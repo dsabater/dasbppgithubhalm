@@ -22,7 +22,7 @@ foreach ($user in $users) {
         Write-Host "OK"
     }
     elseif ($result.Code -eq 400) {
-        Write-Error "FAIL" -NoNewline
+        Write-Error "FAIL"
         # Create a string with result.Error.message skipping the first 35 characters until the first appearance of string "The tracking Id is"
         $errorString = $result.Error.Message.Substring(32, $result.Error.Message.IndexOf("The tracking Id is") - 35)
         # Parse the errorstring variable into an object

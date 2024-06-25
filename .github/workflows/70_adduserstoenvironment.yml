@@ -28,11 +28,8 @@ jobs:
     - name: Install and import modules
       shell: powershell
       run: |
-        $PSVersionTable.PSVersion
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
         Install-Module Microsoft.PowerApps.Administration.PowerShell
-        #Install-Module Microsoft.PowerShell.Utility -Scope CurrentUser
-        #Install-Module Microsoft.PowerApps.Administration.PowerShell -Scope CurrentUser
         Install-Module -Name AzureAD -Scope CurrentUser
         Import-Module AzureAD
         Import-Module Microsoft.PowerShell.Utility

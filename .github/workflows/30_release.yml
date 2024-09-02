@@ -2,8 +2,8 @@ name: 30_release
 run-name: Release ${{ inputs.environment_name }} by @${{ github.actor }}
 on: 
   # Run next friday at 3:00 PM
-  schedule:
-    - cron: '0 15 * * 5'
+  #schedule:
+  #  - cron: '0 15 * * 5'
 
   workflow_dispatch:
     inputs:

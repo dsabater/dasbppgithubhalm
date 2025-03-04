@@ -1,0 +1,61 @@
+# Workflow to run Solution Checker on a solution
+name: 80_runsolutionchecker
+run-name: Run Solution Checker on ${{ inputs.environment_name }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasabate-dev'
+      solution_name:
+        description: 'Solution Name'
+        required: true
+        default: 'BasicSolution'
+
+  
+jobs:
+  job:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      RUNNER_DEBUG: 1
+    
+    steps:
+
+    # Checkout the repository
+    - name: checkout
+      uses: actions/checkout@v4
+
+    # Install Power Platform Tools
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@v1
+
+    - name: Export Solution - Managed
+      uses: microsoft/powerplatform-actions/export-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        solution-name: ${{ inputs.solution_name }}
+        solution-output-file: 'Solution_managed.zip'
+        managed: true
+        overwrite: true
+
+    # Run Solution Checker
+    - name: Run Solution Checker
+      uses: microsoft/powerplatform-actions/check-solution@v1
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        path: 'Solution_managed.zip'
+        
+
+
+
+    
+

@@ -30,3 +30,10 @@ Some actions like **Creating an environment** require tenant-level permissions. 
 `` pac admin application register -id <<applicationid>> ``
 
 More information [here](https://learn.microsoft.com/en-us/power-platform/admin/powershell-create-service-principal)
+
+
+## Example scenario
+
+- **dev1** is the development environment for *ContosoCore*
+- **dev2** is the development environment for *ContosoSales*
+- **dev3** is the development environment for *ContosoCS*

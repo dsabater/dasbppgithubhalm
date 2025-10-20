@@ -18,6 +18,10 @@ on:
         description: 'Git Comment'
         required: false
         default: 'Updates from DEV environment'
+      solution_version_number:
+        description: 'Solution Version'
+        required: false
+        default: '1.0'
     
 permissions:
   contents: write           
@@ -50,7 +54,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         name: ${{ inputs.solution_name }}
-        version: 2.0.${{ env.timestamp }}.${{ github.run_number }}
+        version: ${{inputs.solution_version_number}}.${{ env.timestamp }}.${{ github.run_number }}
 
     - name: Publish customizations
       uses: microsoft/powerplatform-actions/publish-solution@latest

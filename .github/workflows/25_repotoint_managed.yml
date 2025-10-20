@@ -1,0 +1,77 @@
+# This workflow will deploy all unmanaged solutions to a INT environment
+name: 25_repotoint_managed
+run-name: Deploy all **managed** solutions to INT by @${{ github.actor }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Environment Name'
+        required: true
+        default: 'dasbint'
+  pull_request:
+    branches: [ "main" ]
+ 
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
+    
+    env:
+      RUNNER_DEBUG: 1
+      
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Pack ContosoCore Solution - Unmanaged
+      uses: microsoft/powerplatform-actions/pack-solution@latest
+      with:
+        solution-file: solution1.zip
+        solution-folder: 'solutions/ContosoCore'
+        solution-type: 'Managed'
+
+    - name: Pack ContosoSales Solution - Managed
+      uses: microsoft/powerplatform-actions/pack-solution@latest
+      with:
+        solution-file: solution2.zip
+        solution-folder: 'solutions/ContosoSales'
+        solution-type: 'Managed'
+
+    - name: Pack ContosoCS Solution - Managed
+      uses: microsoft/powerplatform-actions/pack-solution@latest
+      with:
+        solution-file: solution3.zip
+        solution-folder: 'solutions/ContosoCS'
+        solution-type: 'Managed'
+
+    - name: Deploy ContosoCore to INT
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: solution1_managed.zip
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+
+    - name: Deploy ContosoSales to INT
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: solution2_managed.zip
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+
+    - name: Deploy ContosoCS to INT
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: solution3_managed.zip
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}

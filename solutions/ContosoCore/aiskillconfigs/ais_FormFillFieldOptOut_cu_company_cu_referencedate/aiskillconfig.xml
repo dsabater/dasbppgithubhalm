@@ -4,7 +4,7 @@
     <entityid.logicalname>cu_company</entityid.logicalname>
     <logicalname>cu_referencedate</logicalname>
   </attribute>
-  <description>cu_company - Reference Date Form fill opt out</description>
+  <description>cu_Company - Reference Date Form fill opt out</description>
   <entity>
     <logicalname>cu_company</logicalname>
   </entity>

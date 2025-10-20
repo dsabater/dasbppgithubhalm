@@ -1,6 +1,6 @@
-# This workflow will deploy a solution to UAT environment
-name: 20_repotouat
-run-name: Deploy to UAT by @${{ github.actor }}
+# This workflow will deploy a managed solution to an environment
+name: 20_repotoenv_managed
+run-name: Deploy **managed** soltion '${{ inputs.solution_name }}' to ${{ inputs.environment_name }} by @${{ github.actor }}
 
 on:
   workflow_dispatch:

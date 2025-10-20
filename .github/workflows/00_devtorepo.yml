@@ -1,7 +1,7 @@
 # Export solution from DEV environment
 #  Unpack it and prepare, commit and push a git branch with the changes
 name: 00_devtorepo
-run-name: Dev ${{ inputs.environment_name }} to Repo  by @${{ github.actor }}
+run-name: Export solution '${{ inputs.solution_name }}' from environment ${{ inputs.environment_name }} to Repo  by @${{ github.actor }}
 
 on:
   workflow_dispatch:

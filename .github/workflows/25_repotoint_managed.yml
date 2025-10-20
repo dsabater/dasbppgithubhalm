@@ -54,6 +54,8 @@ jobs:
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: solution1.zip
+        run-asynchronously: true
+        stage-and-upgrade: true
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
@@ -63,6 +65,7 @@ jobs:
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: solution2.zip
+        stage-and-upgrade: true
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
@@ -72,6 +75,7 @@ jobs:
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: solution3.zip
+        stage-and-upgrade: true
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}

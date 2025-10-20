@@ -80,7 +80,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
-        run-asynchronously: true
+        run-asynchronously: false
         use-deployment-settings-file: false
         # deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
 
@@ -93,7 +93,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
-        run-asynchronously: true
+        run-asynchronously: false
         use-deployment-settings-file: false
         # deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
 
@@ -106,7 +106,7 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
-        run-asynchronously: true
+        run-asynchronously: false
         use-deployment-settings-file: false
         # deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
 

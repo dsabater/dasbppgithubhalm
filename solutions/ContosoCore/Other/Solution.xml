@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25093.154" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25093.154" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25093.00154">
+<ImportExportXml version="9.2.25093.154" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25093.154" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25094.00162">
   <SolutionManifest>
     <UniqueName>ContosoCore</UniqueName>
     <LocalizedNames>
@@ -8,7 +8,7 @@
     <Descriptions>
       <Description description="Demo for ALM for Power Platform - Solution example with shared components in Contoso University." languagecode="1033" />
     </Descriptions>
-    <Version>2.0.20251017.21</Version>
+    <Version>2.0.20251020.23</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>contoso_university</UniqueName>

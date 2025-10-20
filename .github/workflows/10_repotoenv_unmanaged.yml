@@ -1,6 +1,6 @@
 # This workflow will deploy an unmanaged solution to a DEV environment
-name: 10_repotodev
-run-name: Deploy unmanaged to DEV by @${{ github.actor }}
+name: 10_repotoenv_unmanaged
+run-name: Deploy unmanaged to ${{environment_name}} by @${{ github.actor }}
 
 on:
   workflow_dispatch:

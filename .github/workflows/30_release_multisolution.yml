@@ -1,0 +1,113 @@
+name: 30_release
+run-name: Release ${{ inputs.environment_name }} by @${{ github.actor }}
+on: 
+  # Run next friday at 3:00 PM
+  #schedule:
+  #  - cron: '0 15 * * 5'
+
+  workflow_dispatch:
+    inputs:
+      environment_name:
+        description: 'Target Environment'
+        required: true
+        default: 'dasabate-uat'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Pack Solution ContosoCore
+      uses: microsoft/powerplatform-actions/pack-solution@v1
+      with:
+        solution-file: 'out/solution1.zip'
+        solution-folder: 'solutions/ContosoCore'
+        solution-type: 'Both'
+
+    - name: Pack Solution ContosoSales
+      uses: microsoft/powerplatform-actions/pack-solution@v1
+      with:
+        solution-file: 'out/solution2.zip'
+        solution-folder: 'solutions/ContosoSales'
+        solution-type: 'Both'
+
+    - name: Pack Solution ContosoCS
+      uses: microsoft/powerplatform-actions/pack-solution@v1
+      with:
+        solution-file: 'out/solution3.zip'
+        solution-folder: 'solutions/ContosoCS'
+        solution-type: 'Both'
+
+    - name: Upload artifact
+      id: artifact-upload-step
+      uses: actions/upload-artifact@v4
+      with:
+        name: drop
+        path: out
+
+    - name: Output artifact ID
+      run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
+    
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_name }}
+
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+
+    - name: Display structure of files
+      run: ls -R
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
+    - name: Import Solution ContosoCore
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: 'drop/solution1_managed.zip'
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        activate-plugins: true
+        run-asynchronously: true
+        use-deployment-settings-file: true
+        deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
+
+    - name: Import Solution ContosoSales
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: 'drop/solution2_managed.zip'
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        activate-plugins: true
+        run-asynchronously: true
+        use-deployment-settings-file: true
+        deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
+
+    - name: Import Solution ContosoCS
+      uses: microsoft/powerplatform-actions/import-solution@latest
+      with:
+        environment-url: ${{ vars.ENVIRONMENT_URL }}
+        solution-file: 'drop/solution3_managed.zip'
+        app-id: ${{ vars.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        tenant-id: ${{ vars.TENANT_ID }}
+        activate-plugins: true
+        run-asynchronously: true
+        use-deployment-settings-file: true
+        deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
+
+

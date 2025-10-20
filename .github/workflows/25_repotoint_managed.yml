@@ -53,7 +53,7 @@ jobs:
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        solution-file: solution1_managed.zip
+        solution-file: solution1.zip
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
@@ -62,7 +62,7 @@ jobs:
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        solution-file: solution2_managed.zip
+        solution-file: solution2.zip
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
@@ -71,7 +71,7 @@ jobs:
       uses: microsoft/powerplatform-actions/import-solution@latest
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
-        solution-file: solution3_managed.zip
+        solution-file: solution3.zip
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}

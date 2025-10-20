@@ -81,8 +81,8 @@ jobs:
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
         run-asynchronously: true
-        use-deployment-settings-file: true
-        deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
+        use-deployment-settings-file: false
+        # deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
 
     - name: Import Solution ContosoSales
       uses: microsoft/powerplatform-actions/import-solution@latest
@@ -94,8 +94,8 @@ jobs:
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
         run-asynchronously: true
-        use-deployment-settings-file: true
-        deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
+        use-deployment-settings-file: false
+        # deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
 
     - name: Import Solution ContosoCS
       uses: microsoft/powerplatform-actions/import-solution@latest
@@ -107,7 +107,7 @@ jobs:
         tenant-id: ${{ vars.TENANT_ID }}
         activate-plugins: true
         run-asynchronously: true
-        use-deployment-settings-file: true
-        deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
+        use-deployment-settings-file: false
+        # deployment-settings-file: 'drop/deploymentSettings_${{ inputs.environment_name }}.json'
 
 

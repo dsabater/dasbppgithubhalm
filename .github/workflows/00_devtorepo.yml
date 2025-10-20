@@ -13,7 +13,11 @@ on:
       solution_name:
         description: 'Solution Name'
         required: true
-        default: 'BasicSolution'
+        default: 'ContosoCore'
+      git_comment:
+        description: 'Git Comment'
+        required: false
+        default: 'Updates from DEV environment'
     
 permissions:
   contents: write           
@@ -99,10 +103,10 @@ jobs:
       run: |
         git fetch --all  
         git config --global user.email "no-reply@github.com"
-        git config --global user.name "GitHub Actions"
+        git config --global user.name "@${{ github.actor }}"
         git checkout main
         git add --all 
-        git commit -m "Updates from the dev environment"
+        git commit -m "${{ inputs.git_comment }}" 
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push
 

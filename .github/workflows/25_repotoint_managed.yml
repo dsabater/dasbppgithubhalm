@@ -9,6 +9,10 @@ on:
         description: 'Environment Name'
         required: true
         default: 'dasbint'
+      stage-and-upgrade:
+        description: 'Stage and Upgrade existing solutions'
+        required: false
+        default: 'true'
   pull_request:
     branches: [ "main" ]
  
@@ -55,7 +59,7 @@ jobs:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: solution1.zip
         run-asynchronously: true
-        stage-and-upgrade: true
+        stage-and-upgrade: ${{ inputs.stage-and-upgrade }}
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
@@ -65,7 +69,7 @@ jobs:
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: solution2.zip
-        stage-and-upgrade: true
+        stage-and-upgrade: ${{ inputs.stage-and-upgrade }}
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
@@ -75,7 +79,7 @@ jobs:
       with:
         environment-url: ${{ vars.ENVIRONMENT_URL }}
         solution-file: solution3.zip
-        stage-and-upgrade: true
+        stage-and-upgrade: ${{ inputs.stage-and-upgrade }}
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}

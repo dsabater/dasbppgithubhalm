@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.25093.154" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25093.154" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25094.00162">
+<ImportExportXml version="9.2.25094.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.25094.162" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.25094.00162">
   <SolutionManifest>
     <UniqueName>ContosoCS</UniqueName>
     <LocalizedNames>
       <LocalizedName description="ContosoCS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>2.0.20251020.29</Version>
+    <Version>1.0.20251022.40</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>contoso_university</UniqueName>

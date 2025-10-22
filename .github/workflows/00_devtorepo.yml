@@ -26,7 +26,7 @@ on:
 permissions:
   contents: write           
 jobs:
-  build:
+  export:
 
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment_name }}
@@ -87,6 +87,11 @@ jobs:
         managed: true
         overwrite: true
 
+  push:
+    needs: export
+    runs-on: ubuntu-latest
+    steps:
+
     - name: Unpack Solution
       uses: microsoft/powerplatform-actions/unpack-solution@latest
       with:
@@ -113,4 +118,3 @@ jobs:
         git commit -m "${{ inputs.git_comment }}" 
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push
-

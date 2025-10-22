@@ -1,36 +1,19 @@
 # Export solution from DEV environment
 #  Unpack it and prepare, commit and push a git branch with the changes
-name: 00_devtorepo
-run-name: Export solution '${{ inputs.solution_name }}' from environment ${{ inputs.environment_name }} to Repo  by @${{ github.actor }}
+name: 00_devtorepo_external
+run-name: Export solution '${{ github.event.client_payload.solution_name }}' from environment ${{ github.event.client_payload.environment_name }} to Repo  by @${{ github.actor }}
 
 on:
-
-  workflow_dispatch:
-    inputs:
-      environment_name:
-        description: 'Environment Name'
-        required: true
-        default: 'dasabate-dev'
-      solution_name:
-        description: 'Solution Name'
-        required: true
-        default: 'ContosoCore'
-      git_comment:
-        description: 'Git Comment'
-        required: false
-        default: 'Updates from DEV environment'
-      solution_version_number:
-        description: 'Solution Version'
-        required: false
-        default: '1.0'
-    
+  repository_dispatch: 
+    types: [ 'devtorepo' ]
+   
 permissions:
   contents: write           
 jobs:
   export:
 
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment_name }}
+    environment: ${{ github.event.client_payload.environment_name }}
     
     env:
       RUNNER_DEBUG: 1
@@ -54,8 +37,8 @@ jobs:
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
-        name: ${{ inputs.solution_name }}
-        version: ${{inputs.solution_version_number}}.${{ env.timestamp }}.${{ github.run_number }}
+        name: ${{ github.event.client_payload.solution_name }}
+        version: ${{github.event.client_payload.solution_version_number}}.${{ env.timestamp }}.${{ github.run_number }}
 
     - name: Publish customizations
       uses: microsoft/powerplatform-actions/publish-solution@latest
@@ -72,7 +55,7 @@ jobs:
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
-        solution-name:  ${{ inputs.solution_name }}
+        solution-name:  ${{ github.event.client_payload.solution_name }}
         solution-output-file: 'Solution.zip'
         overwrite: true  
 
@@ -83,7 +66,7 @@ jobs:
         app-id: ${{ vars.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         tenant-id: ${{ vars.TENANT_ID }}
-        solution-name: ${{ inputs.solution_name }}
+        solution-name: ${{ github.event.client_payload.solution_name }}
         solution-output-file: 'Solution_managed.zip'
         managed: true
         overwrite: true
@@ -121,14 +104,14 @@ jobs:
       with:
         solution-file: 'Solution.zip'
         solution-type: 'Both'
-        solution-folder: 'solutions/${{ inputs.solution_name }}'
+        solution-folder: 'solutions/${{ github.event.client_payload.solution_name }}'
         overwrite-files: true
     
     - name: Prepare solution changes for check-in into source control
       uses: microsoft/powerplatform-actions/branch-solution@latest
       with:
-        solution-folder: 'solutions/${{ inputs.solution_name }}'
-        solution-target-folder: 'src/solutions/${{ inputs.solution_name }}'
+        solution-folder: 'solutions/${{ github.event.client_payload.solution_name }}'
+        solution-target-folder: 'src/solutions/${{ github.event.client_payload.solution_name }}'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         allow-empty-commit: true
 
@@ -139,6 +122,6 @@ jobs:
         git config --global user.name "@${{ github.actor }}"
         git checkout main
         git add --all 
-        git commit -m "${{ inputs.git_comment }} -- version ${{inputs.solution_version_number}}.${{ env.timestamp }}.${{ github.run_number }}" 
+        git commit -m "${{ github.event.client_payload.git_comment }} -- version ${{github.event.client_payload.solution_version_number}}.${{ env.timestamp }}.${{ github.run_number }}" 
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push

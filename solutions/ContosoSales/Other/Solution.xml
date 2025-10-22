@@ -6,7 +6,7 @@
       <LocalizedName description="ContosoSales" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.20251022.35</Version>
+    <Version>1.0.20251022.41</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>contoso_university</UniqueName>

@@ -4,6 +4,9 @@ name: 00_devtorepo
 run-name: Export solution '${{ inputs.solution_name }}' from environment ${{ inputs.environment_name }} to Repo  by @${{ github.actor }}
 
 on:
+  repository_dispatch: 
+    types: [ 'start' ]
+
   workflow_dispatch:
     inputs:
       environment_name:

@@ -91,6 +91,14 @@ jobs:
     needs: export
     runs-on: ubuntu-latest
     steps:
+    
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Get current timestamp
+      run: |
+        echo "timestamp=$(date +"%Y%m%d")" >> "$GITHUB_ENV"
+
 
     - name: Install Power Platform Tools
       uses: microsoft/powerplatform-actions/actions-install@latest

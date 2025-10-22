@@ -92,6 +92,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: Install Power Platform Tools
+      uses: microsoft/powerplatform-actions/actions-install@latest
+
     - name: Unpack Solution
       uses: microsoft/powerplatform-actions/unpack-solution@latest
       with:
@@ -115,6 +118,6 @@ jobs:
         git config --global user.name "@${{ github.actor }}"
         git checkout main
         git add --all 
-        git commit -m "${{ inputs.git_comment }}" 
+        git commit -m "${{ inputs.git_comment }} -- version ${{inputs.solution_version_number}}.${{ env.timestamp }}.${{ github.run_number }}" 
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push

@@ -1,0 +1,15 @@
+<aiskillconfig uniquename="ais_FormFillFieldOptOut_cu_company_cu_referencedate">
+  <aiskill>FormFillFieldOptOut</aiskill>
+  <attribute>
+    <entityid.logicalname>cu_company</entityid.logicalname>
+    <logicalname>cu_referencedate</logicalname>
+  </attribute>
+  <description>cu_Company - Reference Date Form fill opt out</description>
+  <entity>
+    <logicalname>cu_company</logicalname>
+  </entity>
+  <iscustomizable>1</iscustomizable>
+  <scope>1</scope>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</aiskillconfig>
